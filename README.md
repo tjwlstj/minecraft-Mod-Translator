@@ -7,6 +7,7 @@
 4. 대신 `Papago 버전`의 경우 머기업답게 준수한 퀄리티의 번역과 깔끔한 API의 도움으로 번역이 아주 잘되나 아쉽게도 돈이 들어가는 관계로 `N Cloud`에서 직접 API 키를 발급받아 사용해주시기 바랍니다. [Papago N Cloud 링크](https://www.ncloud.com/product/aiService/papagoTranslation)
 5. `Papago 버전`을 이용하신다면 **translator.py**안에 **client_id**, **client_secret** 에다 발급받은 API 키를 입력하셔서 사용하면 됩니다.
 6. 버전은 **branch**로 나눠놓았습니다.
+7. 본 프로젝트는 Forge 모드에서만 테스트 했습니다. (테스트 된 버전 1.18.x ~ 1.20.x)
   
 # Requirements
 1. commentjson==0.9.0  
@@ -24,4 +25,3 @@ pip install googletrans==4.0.0rc1
 제가 생각해도 기능구현만 우선시해서 가독성이 겁나 구린데 죄송합니다.  
 아직 parameter도 설정파일로 안만들었고 UI도 없는데 직장인이라 업데이트가 많이 늦어요.  
 혹시라도 이 프로그램을 사용하시고 수정이나 이슈를 알려주시면 최대한 빨리 반영하도록 하겠습니다.  
-영알못들아... 나에게 힘을 줘..!!
