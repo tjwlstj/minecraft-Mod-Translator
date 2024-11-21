@@ -1,27 +1,48 @@
-# minecraft Mod Translator
-## (부제)영어가 딸려서 만든 모드 번역기
+# Minecraft Mod Translator  
+**(부제)** 영어가 부족해서 만든 모드 번역기
 
-1. `모드`가 1개면 그냥 하겠는데 **pam's harvest**하다가 능지가 딸려 현타와서 만들었습니다.  
-2. 해당 프로그램은 2가지 버전이 존재합니다. `구글 버전`과 `Papago 버전`입니다.  
-3. 현재 `구글 버전`의 경우 `무료번역`은 가능하지만 중간 *timeout*뜨면 에러가 나서 그냥 예외처리로 영어가 그대로 들어가게 해놓았습니다.  
-4. 대신 `Papago 버전`의 경우 머기업답게 준수한 퀄리티의 번역과 깔끔한 API의 도움으로 번역이 아주 잘되나 아쉽게도 돈이 들어가는 관계로 `N Cloud`에서 직접 API 키를 발급받아 사용해주시기 바랍니다. [Papago N Cloud 링크](https://www.ncloud.com/product/aiService/papagoTranslation)
-5. `Papago 버전`을 이용하신다면 **translator.py**안에 **client_id**, **client_secret** 에다 발급받은 API 키를 입력하셔서 사용하면 됩니다.
-6. 버전은 **branch**로 나눠놓았습니다.
-7. 본 프로젝트는 Forge 모드에서만 테스트 했습니다. (테스트 된 버전 1.18.x ~ 1.20.x)
-  
-# Requirements
-1. commentjson==0.9.0  
-pip install commentjson
-2. googletrans==4.0.0rc1  
-pip install googletrans==4.0.0rc1
-# 사용방법
-1. **mod**폴더에 번역하고자 하는 jar 모드 파일을 넣습니다.
-2. (**cmd** or **powershell**) python main.py
-3. 열심히 기다립니다.
-4. **translated_mod**에 번역된 jar 모드 파일이 있을겁니다.
-5. 이제 그 모드파일을 가져다 적용하고 즐기세요!  
+---
+
+## 📌 개요
+1. **OpenAI의 ChatGPT**를 활용하여 기존 번역기를 개선한 버전입니다.  
+2. 이전에 사용하던 `Papago AI`는 가격 부담(약 5달러 + 부가세 0.5달러)으로 인해, **ChatGPT API**로 전환했습니다.
+3. **Papago 버전**과 동일하게 **API 키**가 필요하며, OpenAI API를 활용합니다.
+4. **API 키 발급 및 레퍼런스**는 [OpenAI API Platform](https://platform.openai.com/)에서 확인할 수 있습니다.
+5. **Minecraft 1.18.x ~ 1.21 Forge 모드**에서 테스트를 진행했습니다.
+6. `.json` 형태의 `lang` 파일을 포함한 모드는 번역이 가능합니다.
+
+---
+
+## 💾 Requirements (필수 설치 라이브러리)
+1. **commentjson**  
+   일부 모드 제작자가 JSON에 주석을 추가하는 경우가 있어 필요합니다.  
+    ```bash
+    pip install commentjson
+    ```
+2. **openai**
+    ```bash
+    pip install openai==1.54.4
+    ```
+## 🚀 사용 방법
+1. **`mod` 폴더**를 생성하거나, 프로그램을 한 번 실행하면 자동으로 `mod` 폴더가 생성됩니다.  
+   생성된 폴더에 번역할 모드(`.JAR` 파일)를 추가합니다.
+
+2. **API 키 입력**:  
+   `Translator.py` 파일을 열어 본인의 **API_KEY**를 입력합니다.  
+   OpenAI API 키는 [OpenAI API Platform](https://platform.openai.com/)에서 발급받을 수 있습니다.
+
+3. **명령어 실행**:  
+   터미널에서 아래 명령어를 실행합니다.  
+   ```bash
+   python main.py
+   ```
+
+4. 번역 작업은 시간이 다소 소요됩니다.
+5. 작업이 완료되면 `translated`**폴더**에 모드파일이 생성됩니다.
+6. 번역된 모드 파일을 `마인크래프트 게임 폴더`에 넣고 실행하면 됩니다.
+# 🖼️ 스크린샷
 ![0](./mdimg/01.png)
-# 잡담
-제가 생각해도 기능구현만 우선시해서 가독성이 겁나 구린데 죄송합니다.  
-아직 parameter도 설정파일로 안만들었고 UI도 없는데 직장인이라 업데이트가 많이 늦어요.  
-혹시라도 이 프로그램을 사용하시고 수정이나 이슈를 알려주시면 최대한 빨리 반영하도록 하겠습니다.  
+# 💡 여담
+1. 이전 버전들은 혹시몰라 그대로 놔두겠습니다.
+2. OpenAI ChatGPT 버전은 테스트 버전입니다.
+3. 현재 다른 환경에서 프로그래밍된 코드라 백업 느낌으로 올린거니 실사용하는데 많은 불편함이 있을겁니다. 양해 부탁드립니다. 🙏

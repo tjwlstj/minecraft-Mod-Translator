@@ -1,29 +1,30 @@
-import urllib.request
-import json
+import commentjson
+from openai import OpenAI
 
+API_KEY = "YOUR API KEY"
 
-str1 = "I like burger"
+def doTranslateGPT(_targetJSON):
+    gptObj = OpenAI(
+        api_key=API_KEY
+    )
+    
+    response = gptObj.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role":"system","content":"당신은 게임전문 번역가입니다. 번역하고자 하는 게임은 마인크래프트입니다."},
+            {"role":"system","content":"딕셔너리 형태의 데이터를 넘겨드릴겁니다. Key값은 그대로두고 Value값만 번역해야합니다."},
+            {"role":"system","content":"영어를 한글로 번역하는 작업이며, 답변은 Json 형태로만 주시면 됩니다."},
+            {"role":"user","content":_targetJSON}
+        ]
+    )
+    
+    translated_json_str = response.choices[0].message.content
+   
+    result = translated_json_str[7:-3].strip()
 
-# Papago
-def init_api():
-    client_id = "[your id]"
-    client_secret = "[your secret]"
-    url = "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation"
-    request = urllib.request.Request(url)
-    request.add_header("X-NCP-APIGW-API-KEY-ID",client_id)
-    request.add_header("X-NCP-APIGW-API-KEY",client_secret)
-    return request
+    translated_data = commentjson.loads(result)
+    
+    return translated_data
 
-def translate_papago(request, _text):
-    request = init_api()
-    encText = urllib.parse.quote(_text)
-    data = "source=en&target=ko&text=" + encText
-    response = urllib.request.urlopen(request, data=data.encode("utf-8"))
-    rescode = response.getcode()
-    if(rescode==200):
-        response_body = response.read()
-        rjson = json.loads(response_body.decode())
-        return rjson['message']['result']['translatedText']
-    else:
-        print("Error Code:" + rescode)
-        return -1
+def doTranslateGoogle():
+    pass
