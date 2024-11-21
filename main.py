@@ -18,7 +18,7 @@ def run():
     
     s = TIME_STAMP()
     
-    #logger = logging.getLogger('mod-translator')
+    logger = logging.getLogger('mod-translator')
     
     
     logging.basicConfig(
@@ -31,7 +31,7 @@ def run():
 
     # Directory Check
     logging.info('Directory Checking.')
-    rVal = DirManager.dirCheck()
+    rVal = DirManager.dir_check(logger)
     if rVal == -1:
         logging.error('Mod Directory Status : Error\nMake sure Mod File in \"mod\" folder!')
     elif rVal == -2:

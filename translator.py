@@ -1,7 +1,7 @@
 import commentjson
 from openai import OpenAI
 
-API_KEY = "YOUR API KEY"
+API_KEY = "YOUR_API_KEY"
 
 def doTranslateGPT(_targetJSON):
     gptObj = OpenAI(

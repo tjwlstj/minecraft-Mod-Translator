@@ -157,3 +157,4 @@ mod/
 translated/
 mct.ui
 UI.py
+temp/
