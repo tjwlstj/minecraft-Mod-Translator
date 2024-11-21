@@ -18,7 +18,7 @@ def check_or_create_directory(path: Path, directory_name: str, logger: logging.L
         logger.info(f"{directory_name} directory exists.")
 
 
-def dir_check(logger: logging.Logger) -> int:
+def dirCheck(logger: logging.Logger) -> int:
     """
     Ensures 'mod' and 'translated' directories exist and validates their contents.
 

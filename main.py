@@ -2,9 +2,8 @@ import logging
 from pathlib import Path
 from datetime import datetime
 
-
-import DirManager
-import JarJsonProcessor
+from DirManager import dirCheck
+from JarJsonProcessor import jsonJarManager
 
 def TIME_STAMP():
     return datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -31,7 +30,7 @@ def run():
 
     # Directory Check
     logging.info('Directory Checking.')
-    rVal = DirManager.dir_check(logger)
+    rVal = dirCheck(logger)
     if rVal == -1:
         logging.error('Mod Directory Status : Error\nMake sure Mod File in \"mod\" folder!')
     elif rVal == -2:
@@ -40,7 +39,7 @@ def run():
 
     # Searching Json
     logging.info('Json Searching.')
-    JarJsonProcessor.jarJsonManager('./mod')
+    jsonJarManager('./mod', logger=logger)
 
 
 if __name__ == '__main__':
